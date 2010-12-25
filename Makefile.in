@@ -37,13 +37,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = testSchemas$(EXEEXT) testRelax$(EXEEXT) \
-	testSAX$(EXEEXT) testHTML$(EXEEXT) testXPath$(EXEEXT) \
-	testURI$(EXEEXT) testThreads$(EXEEXT) testC14N$(EXEEXT) \
-	testAutomata$(EXEEXT) testRegexp$(EXEEXT) testReader$(EXEEXT) \
-	testapi$(EXEEXT) testModule$(EXEEXT) runtest$(EXEEXT) \
-	runsuite$(EXEEXT) testchar$(EXEEXT) testdict$(EXEEXT) \
-	runxmlconf$(EXEEXT) testrecurse$(EXEEXT)
 bin_PROGRAMS = xmllint$(EXEEXT) xmlcatalog$(EXEEXT)
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
@@ -92,7 +85,7 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)" \
 	"$(DESTDIR)$(man3dir)" "$(DESTDIR)$(confexecdir)" \
 	"$(DESTDIR)$(m4datadir)" "$(DESTDIR)$(pkgconfigdir)"
-LTLIBRARIES = $(lib_LTLIBRARIES) $(noinst_LTLIBRARIES)
+LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libxml2_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am__libxml2_la_SOURCES_DIST = SAX.c entities.c encoding.c error.c \
@@ -139,111 +132,10 @@ libxml2_la_OBJECTS = $(am_libxml2_la_OBJECTS)
 libxml2_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(libxml2_la_LDFLAGS) $(LDFLAGS) -o $@
-testdso_la_LIBADD =
-am_testdso_la_OBJECTS = testdso.lo
-testdso_la_OBJECTS = $(am_testdso_la_OBJECTS)
-testdso_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testdso_la_LDFLAGS) $(LDFLAGS) -o $@
-PROGRAMS = $(bin_PROGRAMS) $(noinst_PROGRAMS)
-am_runsuite_OBJECTS = runsuite.$(OBJEXT)
-runsuite_OBJECTS = $(am_runsuite_OBJECTS)
-am__DEPENDENCIES_2 = $(top_builddir)/libxml2.la $(am__DEPENDENCIES_1)
-runsuite_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(runsuite_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_runtest_OBJECTS = runtest.$(OBJEXT)
-runtest_OBJECTS = $(am_runtest_OBJECTS)
-runtest_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(runtest_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_runxmlconf_OBJECTS = runxmlconf.$(OBJEXT)
-runxmlconf_OBJECTS = $(am_runxmlconf_OBJECTS)
-runxmlconf_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(runxmlconf_LDFLAGS) $(LDFLAGS) -o $@
-am_testAutomata_OBJECTS = testAutomata.$(OBJEXT)
-testAutomata_OBJECTS = $(am_testAutomata_OBJECTS)
-testAutomata_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testAutomata_LDFLAGS) $(LDFLAGS) -o $@
-am_testC14N_OBJECTS = testC14N.$(OBJEXT)
-testC14N_OBJECTS = $(am_testC14N_OBJECTS)
-testC14N_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testC14N_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testHTML_OBJECTS = testHTML.$(OBJEXT)
-testHTML_OBJECTS = $(am_testHTML_OBJECTS)
-testHTML_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testHTML_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testModule_OBJECTS = testModule.$(OBJEXT)
-testModule_OBJECTS = $(am_testModule_OBJECTS)
-testModule_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testModule_LDFLAGS) $(LDFLAGS) -o $@
-am_testReader_OBJECTS = testReader.$(OBJEXT)
-testReader_OBJECTS = $(am_testReader_OBJECTS)
-testReader_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testReader_LDFLAGS) $(LDFLAGS) -o $@
-am_testRegexp_OBJECTS = testRegexp.$(OBJEXT)
-testRegexp_OBJECTS = $(am_testRegexp_OBJECTS)
-testRegexp_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testRegexp_LDFLAGS) $(LDFLAGS) -o $@
-am_testRelax_OBJECTS = testRelax.$(OBJEXT)
-testRelax_OBJECTS = $(am_testRelax_OBJECTS)
-testRelax_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testRelax_LDFLAGS) $(LDFLAGS) -o $@
-am_testSAX_OBJECTS = testSAX.$(OBJEXT)
-testSAX_OBJECTS = $(am_testSAX_OBJECTS)
-testSAX_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testSAX_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testSchemas_OBJECTS = testSchemas.$(OBJEXT)
-testSchemas_OBJECTS = $(am_testSchemas_OBJECTS)
-testSchemas_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testSchemas_LDFLAGS) $(LDFLAGS) -o $@
-am_testThreads_OBJECTS = testThreads@THREADS_W32@.$(OBJEXT)
-testThreads_OBJECTS = $(am_testThreads_OBJECTS)
-testThreads_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testThreads_LDFLAGS) $(LDFLAGS) -o $@
-am_testURI_OBJECTS = testURI.$(OBJEXT)
-testURI_OBJECTS = $(am_testURI_OBJECTS)
-testURI_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testURI_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testXPath_OBJECTS = testXPath.$(OBJEXT)
-testXPath_OBJECTS = $(am_testXPath_OBJECTS)
-testXPath_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testXPath_LDFLAGS) $(LDFLAGS) -o $@
-am_testapi_OBJECTS = testapi.$(OBJEXT)
-testapi_OBJECTS = $(am_testapi_OBJECTS)
-testapi_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testapi_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testchar_OBJECTS = testchar.$(OBJEXT)
-testchar_OBJECTS = $(am_testchar_OBJECTS)
-testchar_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testchar_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testdict_OBJECTS = testdict.$(OBJEXT)
-testdict_OBJECTS = $(am_testdict_OBJECTS)
-testdict_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(testdict_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_testrecurse_OBJECTS = testrecurse.$(OBJEXT)
-testrecurse_OBJECTS = $(am_testrecurse_OBJECTS)
-testrecurse_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(testrecurse_LDFLAGS) $(LDFLAGS) -o $@
+PROGRAMS = $(bin_PROGRAMS)
 am_xmlcatalog_OBJECTS = xmlcatalog.$(OBJEXT)
 xmlcatalog_OBJECTS = $(am_xmlcatalog_OBJECTS)
+am__DEPENDENCIES_2 = $(top_builddir)/libxml2.la $(am__DEPENDENCIES_1)
 xmlcatalog_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(xmlcatalog_LDFLAGS) $(LDFLAGS) -o $@
@@ -266,25 +158,9 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(libxml2_la_SOURCES) $(testdso_la_SOURCES) \
-	$(runsuite_SOURCES) $(runtest_SOURCES) $(runxmlconf_SOURCES) \
-	$(testAutomata_SOURCES) $(testC14N_SOURCES) \
-	$(testHTML_SOURCES) $(testModule_SOURCES) \
-	$(testReader_SOURCES) $(testRegexp_SOURCES) \
-	$(testRelax_SOURCES) $(testSAX_SOURCES) $(testSchemas_SOURCES) \
-	$(testThreads_SOURCES) $(testURI_SOURCES) $(testXPath_SOURCES) \
-	$(testapi_SOURCES) $(testchar_SOURCES) $(testdict_SOURCES) \
-	$(testrecurse_SOURCES) $(xmlcatalog_SOURCES) \
+SOURCES = $(libxml2_la_SOURCES) $(xmlcatalog_SOURCES) \
 	$(xmllint_SOURCES)
-DIST_SOURCES = $(am__libxml2_la_SOURCES_DIST) $(testdso_la_SOURCES) \
-	$(runsuite_SOURCES) $(runtest_SOURCES) $(runxmlconf_SOURCES) \
-	$(testAutomata_SOURCES) $(testC14N_SOURCES) \
-	$(testHTML_SOURCES) $(testModule_SOURCES) \
-	$(testReader_SOURCES) $(testRegexp_SOURCES) \
-	$(testRelax_SOURCES) $(testSAX_SOURCES) $(testSchemas_SOURCES) \
-	$(testThreads_SOURCES) $(testURI_SOURCES) $(testXPath_SOURCES) \
-	$(testapi_SOURCES) $(testchar_SOURCES) $(testdict_SOURCES) \
-	$(testrecurse_SOURCES) $(xmlcatalog_SOURCES) \
+DIST_SOURCES = $(am__libxml2_la_SOURCES_DIST) $(xmlcatalog_SOURCES) \
 	$(xmllint_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	html-recursive info-recursive install-data-recursive \
@@ -401,6 +277,7 @@ LIBXML_VERSION_NUMBER = @LIBXML_VERSION_NUMBER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MKDIR_P = @MKDIR_P@
 MODULE_EXTENSION = @MODULE_EXTENSION@
@@ -547,6 +424,7 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
+lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -678,7 +556,8 @@ testModule_SOURCES = testModule.c
 testModule_LDFLAGS = 
 testModule_DEPENDENCIES = $(DEPS)
 testModule_LDADD = $(LDADDS)
-noinst_LTLIBRARIES = testdso.la
+
+#noinst_LTLIBRARIES = testdso.la
 testdso_la_SOURCES = testdso.c
 testdso_la_LDFLAGS = -module -no-undefined -avoid-version -rpath $(libdir)
 testapi_SOURCES = testapi.c
@@ -729,19 +608,19 @@ all: config.h
 .SUFFIXES: .c .lo .o .obj
 am--refresh:
 	@:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
-	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu'; \
-	      $(am__cd) $(srcdir) && $(AUTOMAKE) --gnu \
+	      echo ' cd $(srcdir) && $(AUTOMAKE) --foreign'; \
+	      $(am__cd) $(srcdir) && $(AUTOMAKE) --foreign \
 		&& exit 0; \
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu Makefile
+	  $(AUTOMAKE) --foreign Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -756,9 +635,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure:  $(am__configure_deps)
+$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
+$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
@@ -771,7 +650,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in:  $(am__configure_deps) $(top_srcdir)/acconfig.h
+$(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) $(top_srcdir)/acconfig.h
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@
@@ -817,19 +696,8 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-
-clean-noinstLTLIBRARIES:
-	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
-	@list='$(noinst_LTLIBRARIES)'; for p in $$list; do \
-	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
-	  test "$$dir" != "$$p" || dir=.; \
-	  echo "rm -f \"$${dir}/so_locations\""; \
-	  rm -f "$${dir}/so_locations"; \
-	done
 libxml2.la: $(libxml2_la_OBJECTS) $(libxml2_la_DEPENDENCIES) 
 	$(libxml2_la_LINK) -rpath $(libdir) $(libxml2_la_OBJECTS) $(libxml2_la_LIBADD) $(LIBS)
-testdso.la: $(testdso_la_OBJECTS) $(testdso_la_DEPENDENCIES) 
-	$(testdso_la_LINK)  $(testdso_la_OBJECTS) $(testdso_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	test -z "$(bindir)" || $(MKDIR_P) "$(DESTDIR)$(bindir)"
@@ -873,72 +741,6 @@ clean-binPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
-
-clean-noinstPROGRAMS:
-	@list='$(noinst_PROGRAMS)'; test -n "$$list" || exit 0; \
-	echo " rm -f" $$list; \
-	rm -f $$list || exit $$?; \
-	test -n "$(EXEEXT)" || exit 0; \
-	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
-	echo " rm -f" $$list; \
-	rm -f $$list
-runsuite$(EXEEXT): $(runsuite_OBJECTS) $(runsuite_DEPENDENCIES) 
-	@rm -f runsuite$(EXEEXT)
-	$(runsuite_LINK) $(runsuite_OBJECTS) $(runsuite_LDADD) $(LIBS)
-runtest$(EXEEXT): $(runtest_OBJECTS) $(runtest_DEPENDENCIES) 
-	@rm -f runtest$(EXEEXT)
-	$(runtest_LINK) $(runtest_OBJECTS) $(runtest_LDADD) $(LIBS)
-runxmlconf$(EXEEXT): $(runxmlconf_OBJECTS) $(runxmlconf_DEPENDENCIES) 
-	@rm -f runxmlconf$(EXEEXT)
-	$(runxmlconf_LINK) $(runxmlconf_OBJECTS) $(runxmlconf_LDADD) $(LIBS)
-testAutomata$(EXEEXT): $(testAutomata_OBJECTS) $(testAutomata_DEPENDENCIES) 
-	@rm -f testAutomata$(EXEEXT)
-	$(testAutomata_LINK) $(testAutomata_OBJECTS) $(testAutomata_LDADD) $(LIBS)
-testC14N$(EXEEXT): $(testC14N_OBJECTS) $(testC14N_DEPENDENCIES) 
-	@rm -f testC14N$(EXEEXT)
-	$(testC14N_LINK) $(testC14N_OBJECTS) $(testC14N_LDADD) $(LIBS)
-testHTML$(EXEEXT): $(testHTML_OBJECTS) $(testHTML_DEPENDENCIES) 
-	@rm -f testHTML$(EXEEXT)
-	$(testHTML_LINK) $(testHTML_OBJECTS) $(testHTML_LDADD) $(LIBS)
-testModule$(EXEEXT): $(testModule_OBJECTS) $(testModule_DEPENDENCIES) 
-	@rm -f testModule$(EXEEXT)
-	$(testModule_LINK) $(testModule_OBJECTS) $(testModule_LDADD) $(LIBS)
-testReader$(EXEEXT): $(testReader_OBJECTS) $(testReader_DEPENDENCIES) 
-	@rm -f testReader$(EXEEXT)
-	$(testReader_LINK) $(testReader_OBJECTS) $(testReader_LDADD) $(LIBS)
-testRegexp$(EXEEXT): $(testRegexp_OBJECTS) $(testRegexp_DEPENDENCIES) 
-	@rm -f testRegexp$(EXEEXT)
-	$(testRegexp_LINK) $(testRegexp_OBJECTS) $(testRegexp_LDADD) $(LIBS)
-testRelax$(EXEEXT): $(testRelax_OBJECTS) $(testRelax_DEPENDENCIES) 
-	@rm -f testRelax$(EXEEXT)
-	$(testRelax_LINK) $(testRelax_OBJECTS) $(testRelax_LDADD) $(LIBS)
-testSAX$(EXEEXT): $(testSAX_OBJECTS) $(testSAX_DEPENDENCIES) 
-	@rm -f testSAX$(EXEEXT)
-	$(testSAX_LINK) $(testSAX_OBJECTS) $(testSAX_LDADD) $(LIBS)
-testSchemas$(EXEEXT): $(testSchemas_OBJECTS) $(testSchemas_DEPENDENCIES) 
-	@rm -f testSchemas$(EXEEXT)
-	$(testSchemas_LINK) $(testSchemas_OBJECTS) $(testSchemas_LDADD) $(LIBS)
-testThreads$(EXEEXT): $(testThreads_OBJECTS) $(testThreads_DEPENDENCIES) 
-	@rm -f testThreads$(EXEEXT)
-	$(testThreads_LINK) $(testThreads_OBJECTS) $(testThreads_LDADD) $(LIBS)
-testURI$(EXEEXT): $(testURI_OBJECTS) $(testURI_DEPENDENCIES) 
-	@rm -f testURI$(EXEEXT)
-	$(testURI_LINK) $(testURI_OBJECTS) $(testURI_LDADD) $(LIBS)
-testXPath$(EXEEXT): $(testXPath_OBJECTS) $(testXPath_DEPENDENCIES) 
-	@rm -f testXPath$(EXEEXT)
-	$(testXPath_LINK) $(testXPath_OBJECTS) $(testXPath_LDADD) $(LIBS)
-testapi$(EXEEXT): $(testapi_OBJECTS) $(testapi_DEPENDENCIES) 
-	@rm -f testapi$(EXEEXT)
-	$(testapi_LINK) $(testapi_OBJECTS) $(testapi_LDADD) $(LIBS)
-testchar$(EXEEXT): $(testchar_OBJECTS) $(testchar_DEPENDENCIES) 
-	@rm -f testchar$(EXEEXT)
-	$(testchar_LINK) $(testchar_OBJECTS) $(testchar_LDADD) $(LIBS)
-testdict$(EXEEXT): $(testdict_OBJECTS) $(testdict_DEPENDENCIES) 
-	@rm -f testdict$(EXEEXT)
-	$(testdict_LINK) $(testdict_OBJECTS) $(testdict_LDADD) $(LIBS)
-testrecurse$(EXEEXT): $(testrecurse_OBJECTS) $(testrecurse_DEPENDENCIES) 
-	@rm -f testrecurse$(EXEEXT)
-	$(testrecurse_LINK) $(testrecurse_OBJECTS) $(testrecurse_LDADD) $(LIBS)
 xmlcatalog$(EXEEXT): $(xmlcatalog_OBJECTS) $(xmlcatalog_DEPENDENCIES) 
 	@rm -f xmlcatalog$(EXEEXT)
 	$(xmlcatalog_LINK) $(xmlcatalog_OBJECTS) $(xmlcatalog_LDADD) $(LIBS)
@@ -1009,27 +811,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/parserInternals.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pattern.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/relaxng.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/runsuite.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/runtest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/runxmlconf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/schematron.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testAutomata.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testC14N.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testHTML.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testModule.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testReader.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testRegexp.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testRelax.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSAX.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSchemas.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testThreads@THREADS_W32@.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testURI.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testXPath.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testapi.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testchar.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testdict.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testdso.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testrecurse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threads.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tree.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trio.Plo@am__quote@
@@ -1586,8 +1368,7 @@ maintainer-clean-generic:
 clean: clean-recursive
 
 clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
-	clean-libtool clean-noinstLTLIBRARIES clean-noinstPROGRAMS \
-	mostlyclean-am
+	clean-libtool mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
@@ -1670,8 +1451,7 @@ uninstall-man: uninstall-man1 uninstall-man3
 
 .PHONY: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) CTAGS GTAGS \
 	all all-am am--refresh check check-am clean clean-binPROGRAMS \
-	clean-generic clean-libLTLIBRARIES clean-libtool \
-	clean-noinstLTLIBRARIES clean-noinstPROGRAMS ctags \
+	clean-generic clean-libLTLIBRARIES clean-libtool ctags \
 	ctags-recursive dist dist-all dist-bzip2 dist-gzip dist-hook \
 	dist-lzma dist-shar dist-tarZ dist-xz dist-zip distcheck \
 	distclean distclean-compile distclean-generic distclean-hdr \

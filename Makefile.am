@@ -8,10 +8,10 @@ DIST_SUBDIRS = include . doc example python xstc
 
 INCLUDES = -I$(top_builddir)/include -I@srcdir@/include @THREAD_CFLAGS@ @Z_CFLAGS@ 
 
-noinst_PROGRAMS=testSchemas testRelax testSAX testHTML testXPath testURI \
-                testThreads testC14N testAutomata testRegexp \
-                testReader testapi testModule runtest runsuite testchar \
-		testdict runxmlconf testrecurse
+#noinst_PROGRAMS=testSchemas testRelax testSAX testHTML testXPath testURI \
+#                testThreads testC14N testAutomata testRegexp \
+#                testReader testapi testModule runtest runsuite testchar \
+#		testdict runxmlconf testrecurse
 
 bin_PROGRAMS = xmllint xmlcatalog
 
@@ -157,7 +157,7 @@ testModule_LDFLAGS =
 testModule_DEPENDENCIES = $(DEPS)
 testModule_LDADD= $(LDADDS)
 
-noinst_LTLIBRARIES = testdso.la
+#noinst_LTLIBRARIES = testdso.la
 testdso_la_SOURCES = testdso.c
 testdso_la_LDFLAGS = -module -no-undefined -avoid-version -rpath $(libdir)
 
