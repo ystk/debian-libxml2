@@ -12663,6 +12663,18 @@ _ACEOF
 fi
 done
 
+for ac_func in rand srand time
+do :
+  as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
+ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
+if eval test \"x\$"$as_ac_var"\" = x"yes"; then :
+  cat >>confdefs.h <<_ACEOF
+#define `$as_echo "HAVE_$ac_func" | $as_tr_cpp` 1
+_ACEOF
+
+fi
+done
+
 
 for ac_func in printf sprintf fprintf snprintf vfprintf vsprintf vsnprintf sscanf
 do :
@@ -12909,7 +12921,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for type of socket length (socklen_t)" >&5
 $as_echo_n "checking for type of socket length (socklen_t)... " >&6; }
 cat > conftest.$ac_ext <<EOF
-#line 12912 "configure"
+#line 12924 "configure"
 #include "confdefs.h"
 
 #include <stddef.h>
@@ -12920,7 +12932,7 @@ int main(void) {
 (void)getsockopt (1, 1, 1, NULL, (socklen_t *)NULL)
 ; return 0; }
 EOF
-if { (eval echo configure:12923: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; _out=`eval $ac_compile 2>&1` && test "x$_out" = x; }; then
+if { (eval echo configure:12935: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; _out=`eval $ac_compile 2>&1` && test "x$_out" = x; }; then
   rm -rf conftest*
 
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: socklen_t *" >&5
@@ -12932,7 +12944,7 @@ else
   rm -rf conftest*
 
   cat > conftest.$ac_ext <<EOF
-#line 12935 "configure"
+#line 12947 "configure"
 #include "confdefs.h"
 
 #include <stddef.h>
@@ -12943,7 +12955,7 @@ int main(void) {
 (void)getsockopt (1, 1, 1, NULL, (size_t *)NULL)
 ; return 0; }
 EOF
-if { (eval echo configure:12946: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; _out=`eval $ac_compile 2>&1` && test "x$_out" = x; }; then
+if { (eval echo configure:12958: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; _out=`eval $ac_compile 2>&1` && test "x$_out" = x; }; then
   rm -rf conftest*
 
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: size_t *" >&5
@@ -12955,7 +12967,7 @@ else
   rm -rf conftest*
 
     cat > conftest.$ac_ext <<EOF
-#line 12958 "configure"
+#line 12970 "configure"
 #include "confdefs.h"
 
 #include <stddef.h>
@@ -12966,7 +12978,7 @@ int main(void) {
 (void)getsockopt (1, 1, 1, NULL, (int *)NULL)
 ; return 0; }
 EOF
-if { (eval echo configure:12969: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; _out=`eval $ac_compile 2>&1` && test "x$_out" = x; }; then
+if { (eval echo configure:12981: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; _out=`eval $ac_compile 2>&1` && test "x$_out" = x; }; then
   rm -rf conftest*
 
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: int *" >&5

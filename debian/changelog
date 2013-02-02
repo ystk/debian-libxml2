@@ -1,3 +1,55 @@
+libxml2 (2.7.8.dfsg-2+squeeze6) stable-security; urgency=high
+
+  [ Daniel Veillard ]
+  * Fix potential out of bound access
+    CVE-2012-5134, Closes: #694521.
+
+ -- Aron Xu <aron@debian.org>  Wed, 28 Nov 2012 22:43:42 +0800
+
+libxml2 (2.7.8.dfsg-2+squeeze5) stable-security; urgency=low
+
+  [ Daniel Veillard ]
+  * Fix parser local buffers size problems
+  * Fix entities local buffers size problems
+  CVE-2012-2807, Closes: #679280.
+
+ -- Aron Xu <aron@debian.org>  Thu, 19 Jul 2012 16:49:45 +0800
+
+libxml2 (2.7.8.dfsg-2+squeeze4) stable-security; urgency=high
+
+  * CVE-2011-3102
+
+ -- Moritz Muehlenhoff <jmm@debian.org>  Wed, 23 May 2012 17:12:45 +0000
+
+libxml2 (2.7.8.dfsg-2+squeeze3) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Apply upstream patch to add randomization to hashing with large
+    dictionaries to mitigate hash DoS (CVE-2012-0841; Closes: #660846).
+
+ -- Nico Golde <nion@debian.org>  Wed, 22 Feb 2012 11:17:27 +0000
+
+libxml2 (2.7.8.dfsg-2+squeeze2) stable-security; urgency=high
+
+  * Security update.
+  * parser.c: Fix an allocation error when copying entities.
+    CVE-2011-3919. Closes: #656377.
+  * parser.c: Make sure parser returns when getting a Stop order.
+    CVE-2011-3905.
+  * encoding.c: Fix off by one error. CVE-2011-0216. Closes: 652352.
+  * xpath.c: Fix for undefined namespaces. CVE-2011-2834.
+  * xpath.c, xpointer.c, include/libxml/xpath.h: 
+    Hardening of XPath evaluation. CVE-2011-2821. Closes: 643648.
+
+ -- Aron Xu <aron@debian.org>  Tue, 24 Jan 2012 03:25:23 +0800
+
+libxml2 (2.7.8.dfsg-2+squeeze1) stable-security; urgency=low
+
+  * xpath.c: Fix some potential problems on reallocation failures.
+    Closes: #628537.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 04 Jun 2011 10:40:06 +0900
+
 libxml2 (2.7.8.dfsg-2) unstable; urgency=low
 
   * xpath.c: Fix a double-freeing error in XPath processing code.
