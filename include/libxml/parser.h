@@ -308,6 +308,8 @@ struct _xmlParserCtxt {
     int                nodeInfoNr;    /* Depth of the parsing stack */
     int                nodeInfoMax;   /* Max depth of the parsing stack */
     xmlParserNodeInfo *nodeInfoTab;   /* array of nodeInfos */
+
+    unsigned long      sizeentcopy;   /* volume of entity copy */
 };
 
 /**
