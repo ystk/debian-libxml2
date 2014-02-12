@@ -5,13 +5,12 @@ PYVERS=$(shell pyversions -s)
 # The current default version of python
 PYVER=$(shell pyversions -d)
 
-CFLAGS = -Wall -g
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-      CFLAGS += -O0
-else
-      CFLAGS += -O2 -fno-strict-aliasing
-endif
+CFLAGS = `dpkg-buildflags --get CFLAGS` -Wall
+LDFLAGS = `dpkg-buildflags --get LDFLAGS` -Wl,--as-needed
+CPPFLAGS = `dpkg-buildflags --get CPPFLAGS`
 
 TARGETS := main $(PYVERS) $(PYVERS:%=%-dbg)
 
@@ -25,40 +24,42 @@ $(if $(shell grep -q libxml2-udeb debian/control && echo yes),$(shell sed -i /li
 export DH_OPTIONS = -Nlibxml2-udeb
 endif
 
-CONFIGURE_FLAGS := --with-history CC="gcc -Wl,--as-needed" CFLAGS="$(CFLAGS)" --cache-file="$(CURDIR)/build/config.cache"
+CONFIGURE_FLAGS := --with-history CC="$(CC)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" --cache-file="$(CURDIR)/builddir/config.cache"
 
-override_dh_auto_configure: $(TARGETS:%=configure-%)
+override_dh_auto_configure: $(TARGETS:%=doconfigure-%)
 
-configure-%:
-	dh_auto_configure --builddirectory=build/$* -- $(CONFIGURE_FLAGS)
+doconfigure-%:
+	dh_auto_configure --builddirectory=builddir/$* -- $(CONFIGURE_FLAGS)
 
-configure-main: CONFIGURE_FLAGS += --without-python
-configure-python%: CONFIGURE_FLAGS += --with-python=/usr/bin/$*
-configure-udeb: CONFIGURE_FLAGS += --without-history --with-minimum --with-tree --with-output
+doconfigure-main: CONFIGURE_FLAGS += --without-python
+doconfigure-python%: CONFIGURE_FLAGS += --with-python=/usr/bin/$*
+doconfigure-udeb: CONFIGURE_FLAGS += --without-history --with-minimum --with-tree --with-output
 
-override_dh_auto_build: $(TARGETS:%=build-%)
+override_dh_auto_build: $(TARGETS:%=dobuild-%)
 
-build-%: BUILD_DIR=build/$*
-build-%:
-	$(if $(filter $(BUILD_DIR),build/$*),,[ -d $(BUILD_DIR) ] || mv build/$*/python $(BUILD_DIR))
+dobuild-%: BUILD_DIR=builddir/$*
+dobuild-%: doconfigure-%
+	$(if $(filter $(BUILD_DIR),builddir/$*),,[ -d $(BUILD_DIR) ] || mv builddir/$*/python $(BUILD_DIR))
 	dh_auto_build --builddirectory=$(BUILD_DIR) -- $(BUILD_FLAGS)
 
-build-python%: BUILD_DIR=build/main/$*
-build-python%: BUILD_FLAGS = libxml2mod_la_LIBADD='$$(mylibs)'
-build-python%-dbg: BUILD_FLAGS += PYTHON_INCLUDES=/usr/include/$(*:-dbg=_d) LDFLAGS="-L$(CURDIR)/debian/tmp/usr/lib" CFLAGS="-Wall -g -O0"
+dobuild-python%: BUILD_DIR=builddir/main/$*
+dobuild-python%: BUILD_FLAGS = libxml2mod_la_LIBADD='$$(mylibs)'
+dobuild-python%-dbg: BUILD_FLAGS += PYTHON_INCLUDES=/usr/include/$(*:-dbg=_d) \
+    CFLAGS="$(CFLAGS) -Wall -g -O0" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS) \
+    -L$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)"
+build-arch: $(TARGETS:%=dobuild-%)
+build-indep:
+build: build-arch build-indep
 
 override_dh_auto_clean:
-	rm -rf build debian/tmp-dbg
+	rm -rf builddir debian/tmp-dbg debian/tmp-udeb
+	dh_auto_clean
 
-	-test -r /usr/share/misc/config.sub && \
-	cp -f /usr/share/misc/config.sub config.sub
-	-test -r /usr/share/misc/config.guess && \
-	cp -f /usr/share/misc/config.guess config.guess
+override_dh_auto_install: $(TARGETS:%=doinstall-%)
+	find debian/ -name *.la -delete
 
-override_dh_auto_install: $(TARGETS:%=install-%)
-
-install-main:
-	dh_auto_install --builddirectory=build/main
+doinstall-main:
+	dh_auto_install --builddirectory=builddir/main
 	mv debian/tmp/usr/share/aclocal/libxml.m4 debian/tmp/usr/share/aclocal/libxml2.m4
 
 	# Properly install documentation in /usr/share/doc/libxml2-doc
@@ -77,15 +78,15 @@ install-main:
 		doc/html \
 		doc/tutorial debian/tmp/usr/share/doc/libxml2-doc
 
-install-python%-dbg:
-	$(MAKE) -C build/main/python$*-dbg DESTDIR=$(CURDIR)/debian/tmp-dbg install-pythonLTLIBRARIES
+doinstall-python%-dbg:
+	$(MAKE) -C builddir/main/python$*-dbg DESTDIR=$(CURDIR)/debian/tmp-dbg install-pythonLTLIBRARIES
 	prename 's/(?<!_d)\.so$$/_d.so/' debian/tmp-dbg/usr/lib/python$*/*-packages/*.so
 
-install-python%:
-	dh_auto_install --builddirectory=build/main/python$*
+doinstall-python%:
+	dh_auto_install --builddirectory=builddir/main/python$*
 
-install-udeb:
-	dh_auto_install --builddirectory=build/udeb --destdir=debian/tmp-udeb
+doinstall-udeb:
+	dh_auto_install --builddirectory=builddir/udeb --destdir=debian/tmp-udeb
 
 override_dh_installdocs:
 	dh_installdocs -A AUTHORS TODO README NEWS
@@ -102,10 +103,11 @@ override_dh_install:
 	dh_install -Npython-libxml2-dbg -Nlibxml2-udeb
 	dh_install -ppython-libxml2-dbg --sourcedir=debian/tmp-dbg
 	dh_install -plibxml2-udeb --sourcedir=debian/tmp-udeb
-	sed "/dependency_libs/ s/'.*'/''/" debian/tmp/usr/lib/libxml2.la > debian/libxml2-dev/usr/lib/libxml2.la
+	sed -i -e 's,/lib/$(DEB_HOST_MULTIARCH),/lib,' debian/libxml2-dev/usr/bin/xml2-config
 
 override_dh_strip:
-	dh_strip -a --dbg-package=libxml2-dbg -Npython-libxml2 -Npython-libxml2-dbg
+	dh_strip -a --dbg-package=libxml2-dbg -Nlibxml2-udeb -Nlibxml2-utils -Nlibxml2-utils-dbg -Npython-libxml2 -Npython-libxml2-dbg
+	dh_strip -plibxml2-utils --dbg-package=libxml2-utils-dbg
 	dh_strip -ppython-libxml2 --dbg-package=python-libxml2-dbg
 	$(foreach python, $(filter-out $(PYVER), $(PYVERS)),\
 		cd $(CURDIR)/debian/python-libxml2/usr/lib/pyshared; \
@@ -113,9 +115,12 @@ override_dh_strip:
 			rm -f $(python)/libxml2mod.so; \
 			ln -s ../$(PYVER)/libxml2mod.so $(python)/libxml2mod.so; \
 		fi;)
+	dh_strip
 
 override_dh_makeshlibs:
 	dh_makeshlibs -a $(if $(WITH_UDEB),--add-udeb=libxml2-udeb )-V 'libxml2 (>= 2.7.4)' -- -c4
 
 %:
-	dh $@
+	dh $@ --with autoreconf,python2
+
+

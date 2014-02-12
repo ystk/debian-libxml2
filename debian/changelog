@@ -1,3 +1,183 @@
+libxml2 (2.8.0+dfsg1-7+nmu2) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix cve-2013-2877: out-of-bounds read when handling documents that end
+    abruptly.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sun, 13 Oct 2013 05:01:45 +0000
+
+libxml2 (2.8.0+dfsg1-7+nmu1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix cve-2013-0338 and cve-2013-0339: large memory consuption issues when
+    performing string substition during entity expansion (closes: #702260).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Wed, 06 Mar 2013 20:24:06 +0000
+
+libxml2 (2.8.0+dfsg1-7) unstable; urgency=low
+
+  [ Daniel Veillard ]
+  * Fix potential out of bound access
+    CVE-2012-5134, Closes: #694521.
+
+ -- Aron Xu <aron@debian.org>  Wed, 28 Nov 2012 22:40:13 +0800
+
+libxml2 (2.8.0+dfsg1-6) unstable; urgency=low
+
+  [ Daniel Veillard ]
+  * Fix a failure to report xmlreader parsing failures
+  Closes: #676210.
+
+  [ Aron Xu ]
+  * Add gbp.conf for wheezy branch.
+
+ -- Aron Xu <aron@debian.org>  Sun, 07 Oct 2012 14:18:59 +0800
+
+libxml2 (2.8.0+dfsg1-5) unstable; urgency=low
+
+  [ Daniel Veillard ]
+  * Fix parser local buffers size problems
+  * Fix entities local buffers size problems
+  CVE-2012-2807, Closes: #679280.
+
+ -- Aron Xu <aron@debian.org>  Thu, 19 Jul 2012 17:11:09 +0800
+
+libxml2 (2.8.0+dfsg1-4) unstable; urgency=low
+
+  * Sanitize the output of `xml2-config --libs`.
+
+ -- Aron Xu <aron@debian.org>  Thu, 19 Jul 2012 17:10:06 +0800
+
+libxml2 (2.8.0+dfsg1-3) unstable; urgency=low
+
+  * Remove odd output of xml2-config --libs (Closes: #675682).
+  * Mark libxml2-dev "M-A: same" again, fixed xml2-config
+    (Closes: #674474).
+
+ -- Aron Xu <aron@debian.org>  Tue, 05 Jun 2012 01:44:14 +0800
+
+libxml2 (2.8.0+dfsg1-2) unstable; urgency=low
+
+  * debian/control:
+    - Remove "M-A: same" from libxml2-dev (Closes: #674474).
+    - Add "M-A: foreign" to libxml2-doc.
+  * debian/rules:
+    - Style change on calling dh using --with.
+    - Enable all hardening features.
+    - The sed command for removing DEB_HOST_MULTIARCH is not reverted
+      because it's generally a good idea to avoid it here.
+  * lintian-overrides:
+    - libxml2: package-name-doesnt-match-sonames
+    - python-libxml2-dbg: hardening-no-fortify-functions
+
+ -- Aron Xu <aron@debian.org>  Sat, 02 Jun 2012 15:09:37 +0800
+
+libxml2 (2.8.0+dfsg1-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #148220, #590934)
+  * Adjust changelog of previous NMU (Closes: #674739).
+  * Try to avoid useless space in /usr/bin/xml-config (Closes: #674474).
+
+ -- Aron Xu <aron@debian.org>  Fri, 25 May 2012 04:06:35 +0000
+
+libxml2 (2.7.8.dfsg-9.1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix CVE-2011-3102: off by one pointer access in xpointer.c 
+    (Closes: #674191).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Wed, 23 May 2012 13:48:52 -0400
+
+libxml2 (2.7.8.dfsg-9) unstable; urgency=low
+
+  * Multi-Arch ready. (Closes: #643026)
+    - M-A:same packages are libxml2, libxml2-dev and libxml2-dbg. 
+    - M-A:foreign package is libxml2-utils, others are not M-A.
+    - Library files in udeb are still placed under usr/lib directly.
+  * New binary: libxml2-utils-dbg.
+    Move debuggings symbols of libxml2-utils binaries to another package
+    in favor of marking libxml2-dbg as M-A: same. Descriptions of related
+    binary packages are slightly modified.
+  * Enable hardening for Python modules. (Closes: #664107)
+  * Add support for build-arch and build target, essentially make the
+    package not FTBFS anymore. (Closes: #668672)
+  * Use dh compat 9. Not hardcoding libdir in debian/rules.
+  * Port to source format 3.0 to ease future maintenance of patches.
+    - Old patches are stored in 01_historical_changes.patch
+    - Do not patch Makefile.in directly, use dh_autoreconf with patches to
+      configure.in and Makefile.am instead. This will not actually make
+      bootstraping a new architecture more difficult since we already have
+      gettext and autoconf in deep B-D, porters need to break it anyway.
+    - Store doc/examples/index.html in patch to avoid ciculate B-D with
+      xsltproc, we should not B-D on it.
+  * debian/*.dirs: removed, useless.
+
+ -- Aron Xu <aron@debian.org>  Sun, 22 Apr 2012 00:16:37 +0800
+
+libxml2 (2.7.8.dfsg-8) unstable; urgency=high
+
+  * New maintainer (Closes: #654176).
+  * Apply upstream patch to add randomization to hashing with large
+    dictionaries to mitigate hash DoS (CVE-2012-0841; Closes: #660846)
+  * Bump std-ver to 3.9.3, no change needed.
+
+ -- Aron Xu <aron@debian.org>  Thu, 12 Apr 2012 09:19:04 +0800
+
+libxml2 (2.7.8.dfsg-7) unstable; urgency=low
+
+  * Team upload.
+  * parser.c: Fix an allocation error when copying entities.
+    CVE-2011-3919. Closes: #656377.
+
+ -- Andrew O. Shadura <bugzilla@tut.by>  Fri, 20 Jan 2012 12:54:41 +0300
+
+libxml2 (2.7.8.dfsg-6) unstable; urgency=low
+
+  * Team upload.
+  * Enabled hardened build flags (Closes: #654903).
+  * error.c: Fix __xmlRaiseError (Closes: #622358).
+
+ -- Andrew O. Shadura <bugzilla@tut.by>  Thu, 12 Jan 2012 00:57:32 +0300
+
+libxml2 (2.7.8.dfsg-5.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * encoding.c: Fix off by one error. CVE-2011-0216.
+  * parser.c: Make sure parser returns when getting a Stop order.
+    CVE-2011-3905.
+  * Both closes: #652352.
+
+ -- Luk Claes <luk@debian.org>  Fri, 30 Dec 2011 18:31:13 +0100
+
+libxml2 (2.7.8.dfsg-5) unstable; urgency=low
+
+  * xpath.c, xpointer.c, include/libxml/xpath.h: Hardening of XPath evaluation.
+    CVE-2011-2821.
+  * xpath.c: Fix for undefined namespaces. CVE-2011-2834.
+  * Both closes: #643648.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 07 Oct 2011 09:31:14 +0200
+
+libxml2 (2.7.8.dfsg-4) unstable; urgency=low
+
+  * debian/rules: Add --with python2 to dh call.
+  * debian/control:
+    - Remove build dependency on python-support.
+    - Build depend on python-all-dev >= 2.6.6-3~.
+    - Remove XB-Python-Version header.
+    - Bump Standards-Version to 3.9.2.0. No changes required.
+  * debian/pycompat: Removed. With the above changes, closes: #631416.
+    Thanks Colin Watson.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 29 Jul 2011 12:33:08 +0200
+
+libxml2 (2.7.8.dfsg-3) unstable; urgency=low
+
+  * xpath.c: Fix some potential problems on reallocation failures.
+    Closes: #628537.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 04 Jun 2011 10:40:39 +0900
+
 libxml2 (2.7.8.dfsg-2) unstable; urgency=low
 
   * xpath.c: Fix a double-freeing error in XPath processing code.

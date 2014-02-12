@@ -13,9 +13,6 @@
 #ifndef _LARGEFILE_SOURCE
 #define _LARGEFILE_SOURCE
 #endif
-#ifndef _LARGEFILE64_SOURCE
-#define _LARGEFILE64_SOURCE
-#endif
 #ifndef _FILE_OFFSET_BITS
 #define _FILE_OFFSET_BITS 64
 #endif
@@ -81,6 +78,13 @@ void __htmlParseContent(void *ctx);
 void __xmlGlobalInitMutexLock(void);
 void __xmlGlobalInitMutexUnlock(void);
 void __xmlGlobalInitMutexDestroy(void);
+
+#if defined(HAVE_RAND) && defined(HAVE_SRAND) && defined(HAVE_TIME)
+/*
+ * internal thread safe random function
+ */
+int __xmlRandom(void);
+#endif
 
 #ifdef IN_LIBXML
 #ifdef __GNUC__

@@ -321,9 +321,6 @@
     <includes>
       <include>&lt;libxml/tree.h&gt;</include>
       <include>&lt;libxml/parser.h&gt;</include>
-      <include>&lt;libxml/xpath.h&gt;</include>
-      <include>&lt;libxml/xpathInternals.h&gt;</include>
-      <include>&lt;libxml/tree.h&gt;</include>
     </includes>
     <uses>
       <function line='26' file='parser' name='xmlReadFile'/>

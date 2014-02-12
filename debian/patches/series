@@ -1,0 +1,8 @@
+0001-restore-generated-html.patch
+0002-modify-xml2-config-and-pkgconfig-behaviour.patch
+0003-Fix-parser-local-buffers-size-problems.patch
+0004-Fix-entities-local-buffers-size-problems.patch
+0005-Fix-a-failure-to-report-xmlreader-parsing-failures.patch
+0006-Fix-potential-out-of-bound-access.patch
+cve-2013-0338-0339.patch
+cve-2013-2877.patch

@@ -46,6 +46,12 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
+AM_V_GEN = $(am__v_GEN_$(V))
+am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
+am__v_GEN_0 = @echo "  GEN   " $@;
+AM_V_at = $(am__v_at_$(V))
+am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))
+am__v_at_0 = @
 SOURCES =
 DIST_SOURCES =
 RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
@@ -116,6 +122,7 @@ am__relativize = \
   reldir="$$dir2"
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
+AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 AS = @AS@
 AUTOCONF = @AUTOCONF@
@@ -174,8 +181,10 @@ LIBXML_VERSION_NUMBER = @LIBXML_VERSION_NUMBER@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
+LZMA_CFLAGS = @LZMA_CFLAGS@
+LZMA_LIBS = @LZMA_LIBS@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 MODULE_EXTENSION = @MODULE_EXTENSION@
 MODULE_PLATFORM_LIBS = @MODULE_PLATFORM_LIBS@
@@ -235,7 +244,6 @@ TEST_XPTR = @TEST_XPTR@
 THREADS_W32 = @THREADS_W32@
 THREAD_CFLAGS = @THREAD_CFLAGS@
 THREAD_LIBS = @THREAD_LIBS@
-U = @U@
 VERSION = @VERSION@
 VERSION_SCRIPT_FLAGS = @VERSION_SCRIPT_FLAGS@
 WGET = @WGET@
@@ -253,6 +261,7 @@ WITH_ICONV = @WITH_ICONV@
 WITH_ICU = @WITH_ICU@
 WITH_ISO8859X = @WITH_ISO8859X@
 WITH_LEGACY = @WITH_LEGACY@
+WITH_LZMA = @WITH_LZMA@
 WITH_MEM_DEBUG = @WITH_MEM_DEBUG@
 WITH_MODULES = @WITH_MODULES@
 WITH_OUTPUT = @WITH_OUTPUT@
@@ -289,6 +298,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 am__include = @am__include@
@@ -321,7 +331,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -367,7 +376,7 @@ man_MANS = xmllint.1 xmlcatalog.1
 all: all-recursive
 
 .SUFFIXES:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -376,9 +385,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign doc/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu doc/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign doc/Makefile
+	  $(AUTOMAKE) --gnu doc/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -392,9 +401,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 
@@ -785,7 +794,7 @@ web: $(PAGES)
 	    cp elfgcchack.h ../elfgcchack.h; \
 	  fi ; rm -f elfgcchack.h ;  fi );
 
-$(PAGES): xml.html site.xsl
+$(PAGES): xml.html $(srcdir)/site.xsl
 	-@(if [ -x $(XSLTPROC) ] ; then \
 	  echo "Rebuilding the HTML Web pages from xml.html" ; \
 	  $(XSLTPROC) --nonet --html $(top_srcdir)/doc/site.xsl $(top_srcdir)/doc/xml.html > index.html ; fi );
