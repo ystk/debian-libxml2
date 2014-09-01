@@ -3,13 +3,15 @@ Priority: optional
 Section: libs
 Maintainer: Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>
 Uploaders: Aron Xu <aron@debian.org>, YunQiang Su <wzssyqa@gmail.com>
-Standards-Version: 3.9.3
-Build-Depends: debhelper (>= 9), perl, dh-autoreconf, autotools-dev,
- binutils (>= 2.14.90.0.7), python-all-dev (>= 2.6.6-3~), python-all-dbg,
- zlib1g-dev | libz-dev, liblzma-dev, libreadline-dev | libreadline6-dev
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev,
+ libpython-all-dev, libpython-all-dbg,
+ python-all-dev:any (>= 2.7.5-5~), python-all-dbg:any,
+ zlib1g-dev | libz-dev, liblzma-dev
 Homepage: http://xmlsoft.org/
-Vcs-Git: git://git.debian.org/debian-xml-sgml/libxml2.git
-Vcs-Browser: http://git.debian.org/?p=debian-xml-sgml/libxml2.git
+Vcs-Git: git://anonscm.debian.org/debian-xml-sgml/libxml2.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=debian-xml-sgml/libxml2.git
+XS-Testsuite: autopkgtest
 
 Package: libxml2
 Priority: standard
@@ -66,6 +68,7 @@ Package: libxml2-dev
 Architecture: any
 Section: libdevel
 Depends: libxml2 (= ${binary:Version}), ${misc:Depends}
+Suggests: pkg-config
 Multi-Arch: same
 Description: Development files for the GNOME XML library
  XML is a metalanguage to let you design your own markup language.
@@ -143,4 +146,3 @@ Description: Python bindings for the GNOME XML library (debug extension)
  .
  This package contains the files needed to use the GNOME XML library
  in Python programs for use with the Python debug interpreter.
-

@@ -1,37 +1,97 @@
-libxml2 (2.8.0+dfsg1-7+nmu2) stable-security; urgency=high
+libxml2 (2.9.1+dfsg1-4) unstable; urgency=low
 
-  * Non-maintainer upload by the Security Team.
-  * Fix cve-2013-2877: out-of-bounds read when handling documents that end
-    abruptly.
+  [ Christian Svensson ]
+  * Do not build-depend on readline (Closes: #742350)
 
- -- Michael Gilbert <mgilbert@debian.org>  Sun, 13 Oct 2013 05:01:45 +0000
+  [ Daniel Schepler ]
+  * Patch to bootstrap without python (Closes: #738080)
 
-libxml2 (2.8.0+dfsg1-7+nmu1) unstable; urgency=high
+  [ Helmut Grohne ]
+  * Drop unneeded B-D on perl and binutils (Closes: #753005)
 
-  * Non-maintainer upload by the Security Team.
-  * Fix cve-2013-0338 and cve-2013-0339: large memory consuption issues when
-    performing string substition during entity expansion (closes: #702260).
+  [ Adam Conrad ]
+  * Actually run dh_autoreconf, which the old/new mixed rules file misses.
 
- -- Michael Gilbert <mgilbert@debian.org>  Wed, 06 Mar 2013 20:24:06 +0000
+  [ Matthias Klose ]
+  * Add patch to fix python multiarch issue
+  * Allow the package to cross-build by tweaking B-Ds on python
+  * Set PYTHON_LIBS for cross builds
 
-libxml2 (2.8.0+dfsg1-7) unstable; urgency=low
+  [ Aron Xu ]
+  * Use correct $CC
+  * Configure udeb without python
+  * New round of cherry-picking upstream fixes
+    - Includes fixes for CVE-2014-0191 (Closes: #747309).
+  * Call prename with -vf
+  * Require python-all-dev (>= 2.7.5-5~)
+  * Bump std-ver: 3.9.4 -> 3.9.5, no change
+
+ -- Aron Xu <aron@debian.org>  Wed, 09 Jul 2014 05:40:15 +0800
+
+libxml2 (2.9.1+dfsg1-3) unstable; urgency=low
+
+  * debian/patches/0007-Fix-XPath-optimization-with-predicates.patch:
+    - Upstream patch to fix XPath evaluation issue. (Closes: #713146)
+
+ -- Aron Xu <aron@debian.org>  Mon, 05 Aug 2013 11:02:43 +0800
+
+libxml2 (2.9.1+dfsg1-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/patches/000[2-6]-*.patch: 
+     - cherry-picking upstream post-release fixes.
+
+ -- Aron Xu <aron@debian.org>  Mon, 17 Jun 2013 23:24:07 +0800
+
+libxml2 (2.9.1+dfsg1-1) experimental; urgency=low
+
+  * New upstream release (Closes: #696300, #705722).
+  * Add -llzma for static linking (Closes: #697382).
+  * Update symbols.
+  * Update debian/watch, thanks to Bart Martens.
+  * Use canonical Vcs-* fields.
+  * Mark python-libxml2-dbg as "Multi-Arch: same".
+
+ -- Aron Xu <aron@debian.org>  Sun, 09 Jun 2013 00:34:16 +0800
+
+libxml2 (2.9.0+dfsg1-4) experimental; urgency=low
 
   [ Daniel Veillard ]
   * Fix potential out of bound access
     CVE-2012-5134, Closes: #694521.
 
- -- Aron Xu <aron@debian.org>  Wed, 28 Nov 2012 22:40:13 +0800
+ -- Aron Xu <aron@debian.org>  Wed, 28 Nov 2012 22:34:15 +0800
 
-libxml2 (2.8.0+dfsg1-6) unstable; urgency=low
-
-  [ Daniel Veillard ]
-  * Fix a failure to report xmlreader parsing failures
-  Closes: #676210.
+libxml2 (2.9.0+dfsg1-3) experimental; urgency=low
 
   [ Aron Xu ]
-  * Add gbp.conf for wheezy branch.
+  * Remove -L/usr/lib from xml2-config, advise to use pkg-config
+    in man, and add pkg-config to Suggests. (Closes: #689168)
 
- -- Aron Xu <aron@debian.org>  Sun, 07 Oct 2012 14:18:59 +0800
+  [ YunQiang Su ]
+  * Fix python-libxml2 undefined symbol (Closes: #689191)
+
+  [ Daniel Holbach ]
+  * Add simple autopkgtest to the package (Closes: #690047)
+
+ -- Aron Xu <aron@debian.org>  Sun, 28 Oct 2012 03:59:43 +0800
+
+libxml2 (2.9.0+dfsg1-2) experimental; urgency=low
+
+  * Fix a thread portability problem by cherry-picking upstream
+    patch (Closes: #688473).
+
+ -- Aron Xu <aron@debian.org>  Sun, 23 Sep 2012 16:50:12 +0800
+
+libxml2 (2.9.0+dfsg1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Remove old patches applied upstream, cherry-pick one
+    upstream post release patch.
+  * Update symbols.
+  * Update std-ver 3.9.3 -> 3.9.4, no change required.
+
+ -- Aron Xu <aron@debian.org>  Fri, 21 Sep 2012 00:21:42 +0800
 
 libxml2 (2.8.0+dfsg1-5) unstable; urgency=low
 
