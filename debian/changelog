@@ -1,3 +1,13 @@
+libxml2 (2.7.8.dfsg-2+squeeze11) squeeze-lts; urgency=high
+
+  * Non-maintainer upload by the Squeeze LTS Team.
+  * Do not fetch external parsed entities unless asked to do so. This
+    supplements the patch for CVE-2014-0191
+  * Fix regression introducedd by the patch fixing CVE-2014-3660
+    (Closes: #768089)
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sat, 07 Feb 2015 15:05:28 +0100
+
 libxml2 (2.7.8.dfsg-2+squeeze10) squeeze-lts; urgency=high
 
   * Non-maintainer upload by the Squeeze LTS Team.
