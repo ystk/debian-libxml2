@@ -6,7 +6,7 @@ My attempt to optimize XPath expressions containing '//' caused a
 regression reported in bug #695699. This commit disables the
 optimization for expressions of the form '//foo[predicate]'.
 ---
- xpath.c |    5 +++--
+ xpath.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/xpath.c b/xpath.c

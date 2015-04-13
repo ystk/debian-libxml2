@@ -3,7 +3,7 @@ Date: Thu, 6 Feb 2014 10:47:20 +0100
 Subject: fixing a ptotential uninitialized access
 
 ---
- valid.c |    2 +-
+ valid.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/valid.c b/valid.c

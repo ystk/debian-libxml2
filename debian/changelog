@@ -1,3 +1,11 @@
+libxml2 (2.9.1+dfsg1-5) testing; urgency=medium
+
+  * Add pkg-config to B-D
+  * Cherry-pick upstream memory related fixes
+    - Including CVE-2014-3660 (Closes: #765722, #768089)
+
+ -- Aron Xu <aron@debian.org>  Sun, 01 Feb 2015 13:48:36 +0800
+
 libxml2 (2.9.1+dfsg1-4) unstable; urgency=low
 
   [ Christian Svensson ]

@@ -5,7 +5,7 @@ Subject: Do not fetch external parameter entities
 Unless explicitely asked for when validating or replacing entities
 with their value. Problem pointed out by Daniel Berrange <berrange@redhat.com>
 ---
- parser.c |   14 ++++++++++++++
+ parser.c | 14 ++++++++++++++
  1 file changed, 14 insertions(+)
 
 diff --git a/parser.c b/parser.c

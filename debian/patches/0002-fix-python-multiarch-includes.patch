@@ -3,8 +3,8 @@ Date: Wed, 9 Jul 2014 05:30:24 +0800
 Subject: fix python multiarch includes
 
 ---
- python/Makefile.am |    2 +-
- python/Makefile.in |    2 +-
+ python/Makefile.am | 2 +-
+ python/Makefile.in | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/python/Makefile.am b/python/Makefile.am

@@ -1,10 +1,10 @@
-From: =?UTF-8?q?S=C3=A9rgio=20Batista?= <mail@se.rg.io>
+From: =?utf-8?q?S=C3=A9rgio_Batista?= <mail@se.rg.io>
 Date: Mon, 9 Jun 2014 22:10:15 +0800
 Subject: xmllint was not parsing the --c14n11 flag
 
 Cut and paste error, using the wrong variable
 ---
- xmllint.c |    2 +-
+ xmllint.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/xmllint.c b/xmllint.c

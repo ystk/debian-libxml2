@@ -6,8 +6,8 @@ As pointed out by "Tassyns, Bram <BramT@enfocus.com>" on the list
 some call had it other didn't, clean it up and add to all missing
 ones
 ---
- HTMLparser.c |    6 ++++++
- parser.c     |   10 ++++++++++
+ HTMLparser.c |  6 ++++++
+ parser.c     | 10 ++++++++++
  2 files changed, 16 insertions(+)
 
 diff --git a/HTMLparser.c b/HTMLparser.c

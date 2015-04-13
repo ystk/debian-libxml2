@@ -4,7 +4,7 @@ Section: libs
 Maintainer: Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>
 Uploaders: Aron Xu <aron@debian.org>, YunQiang Su <wzssyqa@gmail.com>
 Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev,
+Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, pkg-config,
  libpython-all-dev, libpython-all-dbg,
  python-all-dev:any (>= 2.7.5-5~), python-all-dbg:any,
  zlib1g-dev | libz-dev, liblzma-dev

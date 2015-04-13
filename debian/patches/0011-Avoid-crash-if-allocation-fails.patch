@@ -5,7 +5,7 @@ Subject: Avoid crash if allocation fails
 https://bugzilla.gnome.org/show_bug.cgi?id=704527
 xmlSchemaNewValue() may fail on OOM error
 ---
- xmlschemastypes.c |    4 ++++
+ xmlschemastypes.c | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/xmlschemastypes.c b/xmlschemastypes.c

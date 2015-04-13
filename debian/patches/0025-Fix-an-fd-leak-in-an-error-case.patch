@@ -3,7 +3,7 @@ Date: Thu, 6 Feb 2014 10:38:00 +0100
 Subject: Fix an fd leak in an error case
 
 ---
- catalog.c |    5 +++++
+ catalog.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/catalog.c b/catalog.c

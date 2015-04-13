@@ -3,7 +3,7 @@ Date: Thu, 9 May 2013 16:02:16 +0000
 Subject: properly quote the namespace uris written out during c14n
 
 ---
- c14n.c |    9 +++++----
+ c14n.c | 9 +++++----
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/c14n.c b/c14n.c

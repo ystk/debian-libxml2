@@ -6,7 +6,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=702320
 
 as raised by Gaurav <ya1gaurav@gmail.com>
 ---
- xmllint.c |   13 +++++++++++--
+ xmllint.c | 13 +++++++++++--
  1 file changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/xmllint.c b/xmllint.c

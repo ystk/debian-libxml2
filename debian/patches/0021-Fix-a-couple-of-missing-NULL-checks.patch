@@ -4,7 +4,7 @@ Subject: Fix a couple of missing NULL checks
 
 For https://bugzilla.gnome.org/show_bug.cgi?id=708681
 ---
- tree.c |    2 ++
+ tree.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/tree.c b/tree.c

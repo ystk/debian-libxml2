@@ -7,7 +7,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=707750
 Also reported by Gaurav, simple fix to check the pointer before
 dereference
 ---
- tree.c |    3 ++-
+ tree.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/tree.c b/tree.c

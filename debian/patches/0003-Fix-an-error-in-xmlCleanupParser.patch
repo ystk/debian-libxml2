@@ -8,7 +8,7 @@ xmlCleanupParser calls xmlCleanupGlobals() and then
 xmlResetLastError() but the later reallocate the global
 data freed by previous call. Just swap the two calls.
 ---
- parser.c |    2 +-
+ parser.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/parser.c b/parser.c

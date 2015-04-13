@@ -4,7 +4,7 @@ Subject: Avoid a possible NULL pointer dereference
 
 For https://bugzilla.gnome.org/show_bug.cgi?id=708355
 ---
- xmlmodule.c |    2 +-
+ xmlmodule.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/xmlmodule.c b/xmlmodule.c

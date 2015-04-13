@@ -5,7 +5,7 @@ Subject: xmllint --memory should fail on empty files
 Exposed by https://bugzilla.gnome.org/show_bug.cgi?id=699896
 when doing analysis but a priori unrelated.
 ---
- xmllint.c |    5 ++++-
+ xmllint.c | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/xmllint.c b/xmllint.c

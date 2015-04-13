@@ -7,7 +7,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=705399
 if ctxt->node_seq.buffer is null then ctxt->node_seq.maximum ought
 to be zero but it's better to clarify the check in the code directly.
 ---
- parserInternals.c |    3 ++-
+ parserInternals.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/parserInternals.c b/parserInternals.c

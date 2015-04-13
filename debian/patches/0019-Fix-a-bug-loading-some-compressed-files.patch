@@ -13,7 +13,7 @@ values.  This function uses the stream state in state->zstrm, but calls
 xz_avail which uses the state->strm stream info.  This causes gz_next4 to
 signal a premature EOF if the data it is fetching crosses a 1024 byte boundary.
 ---
- xzlib.c |   26 ++++++++++++++++++++++----
+ xzlib.c | 26 ++++++++++++++++++++++----
  1 file changed, 22 insertions(+), 4 deletions(-)
 
 diff --git a/xzlib.c b/xzlib.c

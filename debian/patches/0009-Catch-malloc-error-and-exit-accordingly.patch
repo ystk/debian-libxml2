@@ -4,7 +4,7 @@ Subject: Catch malloc error and exit accordingly
 
 As pointed privately by Bill Parker <wp02855@gmail.com>
 ---
- xmllint.c |    4 ++++
+ xmllint.c | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/xmllint.c b/xmllint.c

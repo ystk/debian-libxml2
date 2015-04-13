@@ -6,7 +6,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=674789
 
 We need to check for NULL argument before calling atoi()
 ---
- xmllint.c |   12 +++++++-----
+ xmllint.c | 12 +++++++-----
  1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/xmllint.c b/xmllint.c

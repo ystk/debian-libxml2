@@ -3,11 +3,11 @@ Date: Fri, 21 Sep 2012 00:19:41 +0800
 Subject: modify xml2-config and pkgconfig behaviour
 
 ---
- configure.in                 |    2 +-
- libxml-2.0-uninstalled.pc.in |    3 ++-
- libxml-2.0.pc.in             |    2 +-
- xml2-config.1                |    4 ++++
- xml2-config.in               |   22 ++++++++++------------
+ configure.in                 |  2 +-
+ libxml-2.0-uninstalled.pc.in |  3 ++-
+ libxml-2.0.pc.in             |  2 +-
+ xml2-config.1                |  4 ++++
+ xml2-config.in               | 22 ++++++++++------------
  5 files changed, 18 insertions(+), 15 deletions(-)
 
 diff --git a/configure.in b/configure.in

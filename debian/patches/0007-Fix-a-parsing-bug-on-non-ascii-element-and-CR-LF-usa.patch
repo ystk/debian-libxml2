@@ -8,7 +8,7 @@ Somehow the behaviour of the internal parser routine changed
 slightly when encountering CR/LF, which led to a bug when
 parsing document with non-ascii Names
 ---
- parser.c |    6 +++++-
+ parser.c | 6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/parser.c b/parser.c

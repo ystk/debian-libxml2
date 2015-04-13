@@ -6,7 +6,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=705400
 In case of allocation error the pointer was dereferenced before the
 test for a failure
 ---
- SAX2.c |    4 ++--
+ SAX2.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/SAX2.c b/SAX2.c

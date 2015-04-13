@@ -11,7 +11,7 @@ If the freed handler is any one of handlers[i] list, then it will make that
 hanldlers[i] as dangling. This may lead to crash issues at places where
 handlers is read.
 ---
- encoding.c |   16 ++++++++++++++--
+ encoding.c | 16 ++++++++++++++--
  1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/encoding.c b/encoding.c

@@ -6,7 +6,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=707749
 
 Fix 3 cases where we might dereference NULL
 ---
- xmlregexp.c |    8 +++++---
+ xmlregexp.c | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/xmlregexp.c b/xmlregexp.c

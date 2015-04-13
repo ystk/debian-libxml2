@@ -7,7 +7,7 @@ for https://bugzilla.gnome.org/show_bug.cgi?id=708364
 xmlValidateElementContent is a private function but should still
 check the ctxt argument before dereferencing
 ---
- valid.c |    2 +-
+ valid.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/valid.c b/valid.c

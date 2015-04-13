@@ -14,7 +14,7 @@ This commit makes the handling of function arguments more robust.
 * Bail out early when evaluation of XPath function arguments fails.
 * Make sure that there are 'nargs' arguments in the current call frame.
 ---
- xpath.c |    9 +++++++--
+ xpath.c | 9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/xpath.c b/xpath.c

@@ -5,7 +5,7 @@ Subject: Avoid Possible null pointer dereference in memory debug mode
 Fix a use before check on pointer
 For https://bugzilla.gnome.org/show_bug.cgi?id=729849
 ---
- xmlmemory.c |    6 ++++--
+ xmlmemory.c | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/xmlmemory.c b/xmlmemory.c
