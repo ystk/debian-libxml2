@@ -1,3 +1,18 @@
+libxml2 (2.7.8.dfsg-2+squeeze12) squeeze-lts; urgency=medium
+
+  * Non-maintainer upload by the Debian LTS team.
+  * debian/patches:
+    + Fix CVE-2015-1819:  Enforce the reader to run in constant memory.
+      (Closes: #782782).
+    + Fix out-of-bounds memory access when parsing an unclosed HTML comment.
+      (Closes: #782985).
+    + Fix out-of-bound memory access during read operations. (Closes: #783010).
+  * debian/rules:
+    + Disable updating of config.sub and config.guess during
+      override_dh_auto_clean to avoid .debdiff pollution.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 29 May 2015 13:37:58 +0200
+
 libxml2 (2.7.8.dfsg-2+squeeze11) squeeze-lts; urgency=high
 
   * Non-maintainer upload by the Squeeze LTS Team.

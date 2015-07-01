@@ -50,10 +50,10 @@ build-python%-dbg: BUILD_FLAGS += PYTHON_INCLUDES=/usr/include/$(*:-dbg=_d) LDFL
 override_dh_auto_clean:
 	rm -rf build debian/tmp-dbg
 
-	-test -r /usr/share/misc/config.sub && \
-	cp -f /usr/share/misc/config.sub config.sub
-	-test -r /usr/share/misc/config.guess && \
-	cp -f /usr/share/misc/config.guess config.guess
+#	-test -r /usr/share/misc/config.sub && \
+#	cp -f /usr/share/misc/config.sub config.sub
+#	-test -r /usr/share/misc/config.guess && \
+#	cp -f /usr/share/misc/config.guess config.guess
 
 override_dh_auto_install: $(TARGETS:%=install-%)
 

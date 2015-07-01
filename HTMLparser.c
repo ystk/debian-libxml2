@@ -3194,13 +3194,20 @@ htmlParseComment(htmlParserCtxtPtr ctxt) {
 	ctxt->instate = state;
 	return;
     }
+    if ((ctxt->input->end - ctxt->input->cur) < 3) {
+        ctxt->instate = XML_PARSER_EOF;
+        htmlParseErr(ctxt, XML_ERR_COMMENT_NOT_FINISHED,
+                     "Comment not terminated\n", NULL, NULL);
+        xmlFree(buf);
+        return;
+    }
     q = CUR_CHAR(ql);
     NEXTL(ql);
     r = CUR_CHAR(rl);
     NEXTL(rl);
     cur = CUR_CHAR(l);
     len = 0;
-    while (IS_CHAR(cur) &&
+    while (((ctxt->input->end - ctxt->input->cur) > 0) && IS_CHAR(cur) &&
            ((cur != '>') ||
 	    (r != '-') || (q != '-'))) {
 	if (len + 5 >= size) {
@@ -3230,7 +3237,7 @@ htmlParseComment(htmlParserCtxtPtr ctxt) {
 	}
     }
     buf[len] = 0;
-    if (!IS_CHAR(cur)) {
+    if (!(ctxt->input->end - ctxt->input->cur) || !IS_CHAR(cur)) {
 	htmlParseErr(ctxt, XML_ERR_COMMENT_NOT_FINISHED,
 	             "Comment not terminated \n<!--%.50s\n", buf, NULL);
 	xmlFree(buf);
@@ -3990,6 +3997,7 @@ htmlParseContent(htmlParserCtxtPtr ctxt) {
     depth = ctxt->nameNr;
     while (1) {
 	long cons = ctxt->nbChars;
+	long rem = ctxt->input->end - ctxt->input->cur;
 
         GROW;
 
@@ -4055,7 +4063,7 @@ htmlParseContent(htmlParserCtxtPtr ctxt) {
 	    /*
 	     * Sometimes DOCTYPE arrives in the middle of the document
 	     */
-	    if ((CUR == '<') && (NXT(1) == '!') &&
+	    if ((rem >= 9) && (CUR == '<') && (NXT(1) == '!') &&
 		(UPP(2) == 'D') && (UPP(3) == 'O') &&
 		(UPP(4) == 'C') && (UPP(5) == 'T') &&
 		(UPP(6) == 'Y') && (UPP(7) == 'P') &&
@@ -4069,7 +4077,7 @@ htmlParseContent(htmlParserCtxtPtr ctxt) {
 	    /*
 	     * First case :  a comment
 	     */
-	    if ((CUR == '<') && (NXT(1) == '!') &&
+	    if ((rem >= 4) && (CUR == '<') && (NXT(1) == '!') &&
 		(NXT(2) == '-') && (NXT(3) == '-')) {
 		htmlParseComment(ctxt);
 	    }
@@ -4077,14 +4085,14 @@ htmlParseContent(htmlParserCtxtPtr ctxt) {
 	    /*
 	     * Second case : a Processing Instruction.
 	     */
-	    else if ((CUR == '<') && (NXT(1) == '?')) {
+	    else if ((rem >= 2) && (CUR == '<') && (NXT(1) == '?')) {
 		htmlParsePI(ctxt);
 	    }
 
 	    /*
 	     * Third case :  a sub-element.
 	     */
-	    else if (CUR == '<') {
+	    else if ((rem >= 1 ) && (CUR == '<')) {
 		htmlParseElement(ctxt);
 	    }
 
@@ -4092,7 +4100,7 @@ htmlParseContent(htmlParserCtxtPtr ctxt) {
 	     * Fourth case : a reference. If if has not been resolved,
 	     *    parsing returns it's Name, create the node
 	     */
-	    else if (CUR == '&') {
+	    else if ((rem >= 1) && (CUR == '&')) {
 		htmlParseReference(ctxt);
 	    }
 
