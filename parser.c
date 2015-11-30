@@ -6719,7 +6719,7 @@ xmlParseConditionalSections(xmlParserCtxtPtr ctxt) {
 				 NULL, NULL);
 	}
         if ((ctxt-> instate != XML_PARSER_EOF) &&
-            ((ctxt->input->cur + 3) < ctxt->input->end))
+            ((ctxt->input->cur + 3) <= ctxt->input->end))
             SKIP(3);
     }
 }
@@ -6775,6 +6775,14 @@ xmlParseMarkupDecl(xmlParserCtxtPtr ctxt) {
 	    xmlParsePI(ctxt);
 	}
     }
+
+    /*
+     * detect requirement to exit there and act accordingly
+     * and avoid having instate overriden later on
+     */
+    if (ctxt->instate == XML_PARSER_EOF)
+        return;
+
     /*
      * This is only for internal subset. On external entities,
      * the replacement is done before parsing stage
@@ -10110,6 +10118,8 @@ xmlParseEncodingDecl(xmlParserCtxtPtr ctxt) {
 	    encoding = xmlParseEncName(ctxt);
 	    if (RAW != '"') {
 		xmlFatalErr(ctxt, XML_ERR_STRING_NOT_CLOSED, NULL);
+		xmlFree((xmlChar *) encoding);
+		return(NULL);
 	    } else
 	        NEXT;
 	} else if (RAW == '\''){
@@ -10117,6 +10127,8 @@ xmlParseEncodingDecl(xmlParserCtxtPtr ctxt) {
 	    encoding = xmlParseEncName(ctxt);
 	    if (RAW != '\'') {
 		xmlFatalErr(ctxt, XML_ERR_STRING_NOT_CLOSED, NULL);
+		xmlFree((xmlChar *) encoding);
+		return(NULL);
 	    } else
 	        NEXT;
 	} else {
@@ -10164,7 +10176,11 @@ xmlParseEncodingDecl(xmlParserCtxtPtr ctxt) {
 
             handler = xmlFindCharEncodingHandler((const char *) encoding);
 	    if (handler != NULL) {
-		xmlSwitchToEncoding(ctxt, handler);
+		if (xmlSwitchToEncoding(ctxt, handler) < 0) {
+		    /* failed to convert */
+		    ctxt->errNo = XML_ERR_UNSUPPORTED_ENCODING;
+		    return(NULL);
+		}
 	    } else {
 		xmlFatalErrMsgStr(ctxt, XML_ERR_UNSUPPORTED_ENCODING,
 			"Unsupported encoding %s\n", encoding);

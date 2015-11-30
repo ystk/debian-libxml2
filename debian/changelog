@@ -1,3 +1,22 @@
+libxml2 (2.7.8.dfsg-2+squeeze15) squeeze-lts; urgency=high
+
+  * Non-maintainer upload by the Squeeze LTS Team.
+  * fix off by one error for previous patch for CVE-2015-7942
+    (thanks to Salvatore for spotting this)
+  * Add patch for CVE-2015-8241 (Closes: #806384)
+    Buffer overread with XML parser in xmlNextChar
+  * Add patch for CVE-2015-8317_751631
+    issues in the xmlParseXMLDecl function:
+    If we fail conversing the current input stream while
+    processing the encoding declaration of the XMLDecl
+    then it's safer to just abort there and not try to
+    report further errors.
+  * Add patch for CVE-2015-8317_51603
+    If the string is not properly terminated do not try to convert
+    to the given encoding.
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sun, 29 Nov 2015 19:00:37 +0100
+
 libxml2 (2.7.8.dfsg-2+squeeze14) squeeze-lts; urgency=high
 
   * Non-maintainer upload by the Squeeze LTS Team.
