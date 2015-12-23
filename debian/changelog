@@ -1,3 +1,41 @@
+libxml2 (2.9.1+dfsg1-5+deb8u1) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Add patches to address CVE-2015-7941.
+    CVE-2015-7941: Denial of service via out-of-bounds read. (Closes: #783010)
+  * Add 0058-CVE-2015-1819-Enforce-the-reader-to-run-in-constant-.patch.
+    CVE-2015-1819: Enforce the reader to run in constant memory.
+    (Closes: #782782)
+  * Add patches to address CVE-2015-8317.
+    CVE-2015-8317: Out-of-bounds heap read when parsing file with unfinished
+    xml declaration.
+  * Add patches to address CVE-2015-7942.
+    CVE-2015-7942: heap-based buffer overflow in
+    xmlParseConditionalSections(). (Closes: #802827)
+  * Add 0063-Fix-parsing-short-unclosed-comment-uninitialized-acc.patch patch.
+    Parsing an unclosed comment can result in `Conditional jump or move
+    depends on uninitialised value(s)` and unsafe memory access.
+    (Closes: #782985)
+  * Add 0064-CVE-2015-8035-Fix-XZ-compression-support-loop.patch patch.
+    CVE-2015-8035: DoS when parsing specially crafted XML document if XZ
+    support is enabled. (Closes: #803942)
+  * Add 0065-Avoid-extra-processing-of-MarkupDecl-when-EOF.patch patch.
+    CVE-2015-8241: Buffer overread with XML parser in xmlNextChar.
+    (Closes: #806384)
+  * Add 0066-Avoid-processing-entities-after-encoding-conversion-.patch patch.
+    CVE-2015-7498: Heap-based buffer overflow in xmlParseXmlDecl.
+  * Add 0067-CVE-2015-7497-Avoid-an-heap-buffer-overflow-in-xmlDi.patch patch.
+    CVE-2015-7497: Heap-based buffer overflow in xmlDictComputeFastQKey.
+  * Add 0068-CVE-2015-5312-Another-entity-expansion-issue.patch patch.
+    CVE-2015-5312: CPU exhaustion when processing specially crafted XML
+    input.
+  * Add patches to address CVE-2015-7499.
+    CVE-2015-7499: Heap-based buffer overflow in xmlGROW.
+  * Add 0071-CVE-2015-7500-Fix-memory-access-error-due-to-incorre.patch patch.
+    CVE-2015-7500: Heap buffer overflow in xmlParseMisc.
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 19 Dec 2015 15:29:45 +0100
+
 libxml2 (2.9.1+dfsg1-5) testing; urgency=medium
 
   * Add pkg-config to B-D
