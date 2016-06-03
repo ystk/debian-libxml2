@@ -69,3 +69,17 @@
 0069-Add-xmlHaltParser-to-stop-the-parser.patch
 0070-Detect-incoherency-on-GROW.patch
 0071-CVE-2015-7500-Fix-memory-access-error-due-to-incorre.patch
+0072-Heap-based-buffer-overread-in-xmlNextChar.patch
+0073-Bug-763071-heap-buffer-overflow-in-xmlStrncat-https-.patch
+0074-Add-missing-increments-of-recursion-depth-counter-to.patch
+0075-Avoid-an-out-of-bound-access-when-serializing-malfor.patch
+0076-Bug-757711-heap-buffer-overflow-in-xmlFAParsePosChar.patch
+0077-Bug-758588-Heap-based-buffer-overread-in-xmlParserPr.patch
+0078-Bug-758605-Heap-based-buffer-overread-in-xmlDictAddS.patch
+0079-Bug-759398-Heap-use-after-free-in-xmlDictComputeFast.patch
+0080-Fix-inappropriate-fetch-of-entities-content.patch
+0081-Heap-use-after-free-in-htmlParsePubidLiteral-and-htm.patch
+0082-Heap-use-after-free-in-xmlSAX2AttributeNs.patch
+0083-Heap-based-buffer-underreads-due-to-xmlParseName.patch
+0084-Heap-based-buffer-overread-in-htmlCurrentChar.patch
+0085-Avoid-building-recursive-entities.patch

@@ -1,3 +1,28 @@
+libxml2 (2.9.1+dfsg1-5+deb8u2) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Heap-based buffer overread in xmlNextChar (CVE-2016-1762)
+  * heap-buffer-overflow in xmlStrncat (CVE-2016-1834)
+  * Add missing increments of recursion depth counter to XML parser
+    (CVE-2016-3705) (Closes: #823414)
+  * Avoid an out of bound access when serializing malformed strings
+    (CVE-2016-4483) (Closes: #823405)
+  * Heap-buffer-overflow in xmlFAParsePosCharGroup (CVE-2016-1840)
+  * Heap-based buffer overread in xmlParserPrintFileContextInternal
+    (CVE-2016-1838)
+  * Heap-based buffer overread in xmlDictAddString (CVE-2016-1839
+    CVE-2015-8806 CVE-2016-2073) (Closes: #813613, #812807)
+  * Heap use-after-free in xmlDictComputeFastKey (CVE-2016-1836)
+  * Fix inappropriate fetch of entities content (CVE-2016-4449)
+  * Heap use-after-free in htmlParsePubidLiteral and htmlParseSystemiteral
+    (CVE-2016-1837)
+  * Heap use-after-free in xmlSAX2AttributeNs (CVE-2016-1835)
+  * Heap-based buffer-underreads due to xmlParseName (CVE-2016-4447)
+  * Heap-based buffer overread in htmlCurrentChar (CVE-2016-1833)
+  * Avoid building recursive entities (CVE-2016-3627) (Closes: #819006)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 28 May 2016 06:56:40 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u1) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
