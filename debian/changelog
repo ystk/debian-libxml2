@@ -1,3 +1,11 @@
+libxml2 (2.9.1+dfsg1-5+deb8u3) jessie; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix a problem unparsing URIs without a host part like qemu:///system.
+    This unbreaks libvirt, libsys-virt-perl and others (Closes: #781232)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 14 Jun 2016 20:20:41 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u2) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.

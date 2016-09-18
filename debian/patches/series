@@ -83,3 +83,4 @@
 0083-Heap-based-buffer-underreads-due-to-xmlParseName.patch
 0084-Heap-based-buffer-overread-in-htmlCurrentChar.patch
 0085-Avoid-building-recursive-entities.patch
+0086-Fix-a-problem-properly-saving-URIs.patch
