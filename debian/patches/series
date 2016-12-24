@@ -84,3 +84,7 @@
 0084-Heap-based-buffer-overread-in-htmlCurrentChar.patch
 0085-Avoid-building-recursive-entities.patch
 0086-Fix-a-problem-properly-saving-URIs.patch
+0087-Fix-comparison-with-root-node-in-xmlXPathCmpNodes.patch
+0088-Fix-XPointer-paths-beginning-with-range-to.patch
+0089-Disallow-namespace-nodes-in-XPointer-ranges.patch
+0090-Fix-more-NULL-pointer-derefs-in-xpointer.c.patch

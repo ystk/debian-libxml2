@@ -1,3 +1,15 @@
+libxml2 (2.9.1+dfsg1-5+deb8u4) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix comparison with root node in xmlXPathCmpNodes
+  * Fix XPointer paths beginning with range-to (CVE-2016-5131)
+   (Closes: #840554)
+  * Disallow namespace nodes in XPointer ranges (CVE-2016-4658)
+    (Closes: #840553)
+  * Fix more NULL pointer derefs in xpointer.c
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 17 Dec 2016 19:42:58 +0100
+
 libxml2 (2.9.1+dfsg1-5+deb8u3) jessie; urgency=medium
 
   * Non-maintainer upload.
