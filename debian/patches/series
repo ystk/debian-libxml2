@@ -88,3 +88,8 @@
 0088-Fix-XPointer-paths-beginning-with-range-to.patch
 0089-Disallow-namespace-nodes-in-XPointer-ranges.patch
 0090-Fix-more-NULL-pointer-derefs-in-xpointer.c.patch
+0091-Increase-buffer-space-for-port-in-HTTP-redirect-supp.patch
+0092-Prevent-unwanted-external-entity-reference.patch
+0093-Fix-handling-of-parameter-entity-references.patch
+0094-Fix-buffer-size-checks-in-xmlSnprintfElementContent.patch
+0095-Fix-type-confusion-in-xmlValidateOneNamespace.patch

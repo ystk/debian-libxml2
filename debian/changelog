@@ -1,3 +1,28 @@
+libxml2 (2.9.1+dfsg1-5+deb8u5) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Increase buffer space for port in HTTP redirect support (CVE-2017-7376)
+    Incorrect limit was used for port values. (Closes: #870865)
+  * Prevent unwanted external entity reference (CVE-2017-7375)
+    Missing validation for external entities in xmlParsePEReference.
+    (Closes: #870867)
+  * Fix handling of parameter-entity references (CVE-2017-9049, CVE-2017-9050)
+    - Heap-based buffer over-read in function xmlDictComputeFastKey
+      (CVE-2017-9049).
+    - Heap-based buffer over-read in function xmlDictAddString
+      (CVE-2017-9050).
+    (Closes: #863019, #863018)
+  * Fix buffer size checks in xmlSnprintfElementContent (CVE-2017-9047,
+    CVE-2017-9048)
+    - Buffer overflow in function xmlSnprintfElementContent (CVE-2017-9047).
+    - Stack-based buffer overflow in function xmlSnprintfElementContent
+      (CVE-2017-9048).
+    (Closes: #863022, #863021)
+  * Fix type confusion in xmlValidateOneNamespace (CVE-2017-0663)
+    Heap buffer overflow in xmlAddID. (Closes: #870870)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 19 Aug 2017 17:31:22 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u4) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
