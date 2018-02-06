@@ -93,3 +93,4 @@
 0093-Fix-handling-of-parameter-entity-references.patch
 0094-Fix-buffer-size-checks-in-xmlSnprintfElementContent.patch
 0095-Fix-type-confusion-in-xmlValidateOneNamespace.patch
+0096-Fix-XPath-stack-frame-logic.patch
