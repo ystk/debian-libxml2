@@ -1,3 +1,17 @@
+libxml2 (2.9.1+dfsg1-5+deb8u7) jessie-security; urgency=high
+
+  * Non-maintainer upload by the LTS Team. 
+  * CVE-2018-14404
+    Fix of a NULL pointer dereference which might result in a crash and
+    thus in a denial of service.
+  * CVE-2018-14567 and CVE-2018-9251
+    Approvement in LZMA error handling which prevents an infinite loop.
+  * CVE-2017-18258
+    Limit available memory to 100MB to avoid exhaustive memory
+    consumption by malicious files.
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Thu, 27 Sep 2018 19:03:02 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u6) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
