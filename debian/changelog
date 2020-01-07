@@ -1,3 +1,10 @@
+libxml2 (2.9.1+dfsg1-5+deb8u8) jessie-security; urgency=high
+
+  * CVE-2019-19956: Fix a potential denial of service vulnerability via memory
+    leak in the xmlParseBalancedChunkMemoryRecover function.
+
+ -- Chris Lamb <lamby@debian.org>  Sat, 28 Dec 2019 17:51:22 +0000
+
 libxml2 (2.9.1+dfsg1-5+deb8u7) jessie-security; urgency=high
 
   * Non-maintainer upload by the LTS Team. 
