@@ -1,3 +1,19 @@
+libxml2 (2.9.1+dfsg1-5+deb8u9) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS team.
+  * Fix CVE-2017-8872:
+    Global buffer-overflow in the htmlParseTryOrFinish function.
+  * Fix CVE-2019-20388:
+    A memory leak was found in the xmlSchemaValidateStream function of libxml2.
+    Applications that use this library may be vulnerable to memory not being
+    freed leading to a denial of service.
+  * Fix CVE-2020-24977:
+    Out-of-bounds read restricted to xmllint --htmlout.
+  * Fix CVE-2020-7595:
+    Infinite loop in xmlStringLenDecodeEntities can cause a denial of service.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 08 Sep 2020 19:25:41 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u8) jessie-security; urgency=high
 
   * CVE-2019-19956: Fix a potential denial of service vulnerability via memory
