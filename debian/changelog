@@ -1,3 +1,12 @@
+libxml2 (2.9.1+dfsg1-5+deb8u10) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS team.
+  * CVE-2021-3517: heap-based buffer overflow in xmlEncodeEntitiesInternal
+  * CVE-2021-3518: use-after-free in xmlXIncludeDoProcess
+  * CVE-2021-3537: NULL pointer dereference in xmlValidBuildAContentModel
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Mon, 10 May 2021 12:33:10 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u9) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS team.
