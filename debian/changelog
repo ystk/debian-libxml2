@@ -1,3 +1,13 @@
+libxml2 (2.9.1+dfsg1-5+deb8u13) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS team.
+  * Fix CVE-2022-29824: Felix Wilhelm discovered that libxml2 did not correctly
+    check for integer overflows or used wrong types for buffer sizes. This
+    could result in out-of-bounds writes or other memory errors when working on
+    large, multi-gigabyte buffers.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 18 May 2022 15:12:02 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u12) jessie-security; urgency=medium
 
   * Non-maintainer upload by the ELTS Team. 
