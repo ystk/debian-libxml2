@@ -105,8 +105,9 @@ CVE-2017-8872.patch
 CVE-2021-3517.patch
 CVE-2021-3518.patch
 CVE-2021-3537.patch
-
 CVE-2021-3541.patch
 CVE-2022-23308.patch
 Fix-without-valid-build.patch
 CVE-2022-29824.patch
+CVE-2022-40303.patch
+CVE-2022-40304.patch
