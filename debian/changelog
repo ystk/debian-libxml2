@@ -1,3 +1,17 @@
+libxml2 (2.9.1+dfsg1-5+deb8u15) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS Security Team.
+  * Apply upstream patch for CVE-2023-28484: NULL dereference in
+    xmlSchemaFixupComplexType. (Closes: #1034436)
+  * Apply upstream patch for CVE-2023-29469 (Closes: #1034437):
+    Hashing of empty dict strings wasn't deterministic.
+  * Fix CVE-2017-5969 (Closes: #855001)
+    NULL pointer dereference in xmlDumpElementContent in recovery mode.
+  * Add patches for CVE-2017-5130 (Closes: #880000)
+    An integer overflow possibly causing heap corruption.
+
+ -- Tobias Frost <tobi@debian.org>  Thu, 20 Apr 2023 17:07:49 +0200
+
 libxml2 (2.9.1+dfsg1-5+deb8u14) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS team.

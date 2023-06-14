@@ -111,3 +111,9 @@ Fix-without-valid-build.patch
 CVE-2022-29824.patch
 CVE-2022-40303.patch
 CVE-2022-40304.patch
+CVE-2023-28484.patch
+CVE-2023-28484-2.patch
+CVE-2023-29469.patch
+CVE-2017-5969.patch
+CVE-2017-5130-part1.patch
+CVE-2017-5130-part2.patch
