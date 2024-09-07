@@ -1,0 +1,25 @@
+From 578d3b1c871ede5059007eb924ce66407afce5e0 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Mon, 18 Jul 2022 20:59:45 +0200
+Subject: Reset nsNr in xmlCtxtReset
+
+---
+ parser.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/parser.c b/parser.c
+index 4562eecf..161c9023 100644
+--- a/parser.c
++++ b/parser.c
+@@ -15080,6 +15080,8 @@ xmlCtxtReset(xmlParserCtxtPtr ctxt)
+     ctxt->nameNr = 0;
+     ctxt->name = NULL;
+ 
++    ctxt->nsNr = 0;
++
+     DICT_FREE(ctxt->version);
+     ctxt->version = NULL;
+     DICT_FREE(ctxt->encoding);
+-- 
+2.30.2
+

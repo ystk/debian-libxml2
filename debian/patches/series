@@ -117,3 +117,5 @@ CVE-2023-29469.patch
 CVE-2017-5969.patch
 CVE-2017-5130-part1.patch
 CVE-2017-5130-part2.patch
+0001-Reset-nsNr-in-xmlCtxtReset.patch
+0002-Also-reset-nsNr-in-htmlCtxtReset.patch
