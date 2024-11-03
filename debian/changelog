@@ -1,3 +1,17 @@
+libxml2 (2.9.1+dfsg1-5+deb8u17) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS Security Team.
+  * Backport patches from the last stretch upload:
+    - CVE-2016-9318 - improve handling of context input_id (Closes: #844581)
+    - CVE-2017-16932 - infinite recursion in parameter entities
+      (Closes: #882613)
+  * CVE-2023-39615 - Crash with XML_PARSE_SAX1 Parser option (Closes: #1051230)
+  * CVE-2023-45322 - Use after free after memory allocation (Closes: #1053629)
+  * CVE-2024-25062 - Use after free with DTD validation and XInclude expansion
+    enabled (Closes: #1063234)
+
+ -- Tobias Frost <tobi@debian.org>  Sat, 02 Nov 2024 18:55:52 +0100
+
 libxml2 (2.9.1+dfsg1-5+deb8u16) jessie-security; urgency=medium
 
   * Non-maintainer upload by the ELTS Team.
