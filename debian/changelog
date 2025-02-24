@@ -1,3 +1,14 @@
+libxml2 (2.9.1+dfsg1-5+deb8u18) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS Security Team.
+  * Import upstream patches for
+    - CVE-2022-49043 - Use after free (Closes: #1094238)
+    - CVE-2024-56171 - Use after free (Closes: #1098320)
+    - CVE-2025-24928 - Stack based buffer overflow (Closes: #1098321)
+    - CVE-2025-27113 - NULL pointer dereference (Closes: #1098322)
+
+ -- Tobias Frost <tobi@debian.org>  Fri, 21 Feb 2025 17:46:22 +0100
+
 libxml2 (2.9.1+dfsg1-5+deb8u17) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS Security Team.
