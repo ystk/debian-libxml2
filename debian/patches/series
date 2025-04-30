@@ -129,3 +129,6 @@ CVE-2022-49043.patch
 CVE-2024-56171.patch
 CVE-2025-24928.patch
 CVE-2025-27113.patch
+
+CVE-2025-32415.patch
+CVE-2025-32414-bug-889-v2.10.4-and-below.patch
